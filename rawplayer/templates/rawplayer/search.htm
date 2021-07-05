@@ -1,0 +1,38 @@
+{%extends 'rawplayer/basic.htm'%}
+{% block title%}Music Library{% endblock %}
+
+{% block body%}
+<div class="container">
+
+<div>
+   Search results for {{query}} 
+</div>
+
+
+{% for i in songs %}
+<div class="card mb-3" style="max-width: 750px; padding-left: 20%; padding-top: 4%">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/media/{{i.image}}" class="img-fluid rounded-start" alt="..." style="padding-bottom: 25%">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{i.tags}}</p>
+{% if user.is_authenticated %}
+        <form action="/rawplayer/history" method="POST">{% csrf_token %}
+          <input type="hidden" name="music_id" value="{{i.song_id}}">
+          <a href="/rawplayer/songs/{{i.song_id}}"><button class="btn btn-outline-success">Listen Now</button></a>
+        </form>
+        {% else %}
+        <a href="/rawplayer/songs/{{i.song_id}}"><button class="btn btn-outline-success">Listen Now</button></a>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+

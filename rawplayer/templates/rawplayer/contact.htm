@@ -1,0 +1,35 @@
+{%extends 'rawplayer/basic.htm'%}
+{% block title%}About Us{% endblock %}
+
+{% block body %}
+
+{% load static %} 
+
+<div class="about-section">
+<h2 style="text-align:center">Developed By</h2>
+<div class="row" style="padding-top: 6%;;  display: inline-block;">
+  <div class="column">
+    <div class="card" style="padding-left: 5%;;  display: inline-block;">
+      <img src={% static 'rawplayer/maruf.jpg'%} alt="Jane" style="padding-left: 1%;" width="30%">
+      <div class="container">
+        <p><b>Maruf Raihan Anannyo</b></p>
+        <h6>Email : raihan.avalancher@gmail.com</h6>
+        <h6><a href="https://www.linkedin.com/in/maruf-raihan-anannyo/">LinkedIn</a></h6>
+      </div>
+    </div>
+  </div>
+
+<div class="row" style="padding-top: 6%;;  display: inline-block;">
+  <div class="column">
+    <div class="card" style="padding-left: 5%;;  display: inline-block;">
+      <img src={% static 'rawplayer/siam.jpg'%} alt="Jane" style="padding-left: 1%;" width="30%">
+      <div class="container">
+        <p><b>Sayad Alam Siam</b></p>
+        <h6>Email : sayad.siam.35@gmail.com</h6>
+        <h6><a href="https://www.linkedin.com/in/sayad-alam-siam-6a3892112/">LinkedIn</a></h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

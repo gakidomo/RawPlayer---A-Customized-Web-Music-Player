@@ -1,0 +1,83 @@
+{%extends 'rawplayer/basic.htm'%}
+{% block title%}RawPlayer{% endblock %}
+
+{% block body %}
+    {% load static %} 
+
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src={% static 'rawplayer/kawaiiheadphones.jpg'%} class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src={% static 'rawplayer/background-digitalblack.jpg'%} class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src={% static 'rawplayer/musicphoto.jpg'%} class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Designing Section with Bootstrap component CARDS-->
+
+<h2 style="padding-left: 3%; padding-top: 3%; padding-bottom: 3%; font-family:'Comic Sans MS'">Trending Right Now</h2>
+<div class="row" style="padding-left: 4%; padding-right: 1%;  display: inline-block;">
+{% for i in song %}
+{% if i.trend %}
+<div class="card" style="width: 15rem; font-family:'Comic Sans MS'; display: inline-block;">
+  <img src="/media/{{i.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{i.name}}</h5>
+    <p class="card-text">{{i.tags}}</p>
+    <a href="/rawplayer/songs/{{i.song_id}}"><button class="btn btn-outline-success">Listen Now</button></a>
+  </div>
+</div>
+</div>
+{% endif %}
+{% endfor %}
+
+<hr>
+
+
+<h2 style="padding-left: 3%; padding-bottom: 5%; font-family:'Comic Sans MS'">Recommended Just For You</h2>
+<div class="row" style="padding-left: 6%;  display: inline-block;"%>
+
+{% for i in song %}
+{% if i.recommend %}
+<div class="card" style="width: 15rem; font-family:'Comic Sans MS'; display: inline-block;">
+  <img src="/media/{{i.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{i.name}}</h5>
+    <p class="card-text">{{i.tags}}</p>
+    <a href="/rawplayer/songs/{{i.song_id}}"><button class="btn btn-outline-success">Listen Now</button></a>
+  </div>
+</div>
+</div>
+{% endif %}
+{% endfor %}
+<hr>
+
+
+<h2 style="padding-left: 3%; padding-top: 3%; font-family:'Comic Sans MS'">Venture into Spotify</h2>
+<div class="row" style="padding-top: 2%; padding-left: 2%;  display: inline-block;"%>
+
+    <div class="card" style="width: 15rem; padding-left: 2%; font-family:'Comic Sans MS'  display: inline-block;">
+      <img src={% static 'rawplayer/pngegg.png'%} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Top Eight</h5>
+        <p class="card-text">Browse Preview of Top eight tracks of your favourite Artist</p>
+        <a href="/rawplayer/spotify" class="btn btn-primary">Try Now </a>
+      </div>
+    </div>
+    
+
+    {% endblock %}

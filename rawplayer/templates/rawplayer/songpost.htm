@@ -1,0 +1,54 @@
+{%extends 'rawplayer/basic.htm'%}
+{% block title%}Library{% endblock %}
+
+{% block body%}
+
+{% if message%}
+<script>
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: '{{message}}',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    </script>
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" style="padding-top: 5%;">
+            <img src="/media/{{song.image}}" alt="" height="300px" width="300px">
+        </div>
+        <div class="col-md-8">
+            <h1 style="padding-top: 8%; padding-left: 3%; color : brown";>{{song.name}}</h1>
+            <h5 style="padding-left: 3.5%;">{{song.singer}}</h5>
+            <h5 style="padding-left: 3.5%;"><i style="color: Blue;">from </i>{{song.album}}</h5>
+            <audio controls style="padding-top :3%;">
+                <source src="/media/{{song.song}}" type="audio/mp3">
+            </audio>
+            <div style="padding-top: 3%;">
+            <div>
+            <form action="/rawplayer/watchlater" method="POST">{% csrf_token %}
+            <input type="hidden" name="video_id" value="{{song.song_id}}">
+            <button type="submit" class="btn btn-outline-dark">Add to Checklist</button>
+            </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function here(){
+        document.location.href = "/"
+    }
+</script>
+
+{% endblock %}
+{% block js %}
+{% endblock%}
+
+
+
+
